@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Демонстрационная страница стоматологии в Каспийске.">
+  <title>Стоматология в Каспийске</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <svg class="symbols" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="tooth-icon" viewBox="0 0 24 24"><path d="M12 5c-1.7 0-3-1.7-5.2-1.7C4 3.3 2.5 5.4 2.5 8c0 2.3 1 3.9 1.8 6.5.8 2.7 1.5 5.6 3 5.6 1.5 0 1.5-5.8 4.7-5.8s3.2 5.8 4.7 5.8c1.5 0 2.2-2.9 3-5.6.8-2.6 1.8-4.2 1.8-6.5 0-2.6-1.5-4.7-4.3-4.7-2 0-3.1 1.6-5.2 1.7Zm0 0c1.1.7 2.1 1 3.4 1"/></symbol>
+    <symbol id="down-icon" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="arrow-icon" viewBox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6"/></symbol>
+    <symbol id="phone-icon" viewBox="0 0 24 24"><path d="M6.5 3.4 9 7.2 7.4 9c1.6 3.5 4.2 6.1 7.7 7.6l1.7-1.7 3.9 2.5c.3 2-1.4 3.6-3.4 3.2-6.7-1.3-12.6-7.3-14-14-.4-2 1.2-3.7 3.2-3.2Z"/></symbol>
+    <symbol id="chat-icon" viewBox="0 0 24 24"><path d="M20.6 11.6a8.5 8.5 0 0 1-12.5 7.5l-4.2 1.1 1.2-4.1a8.5 8.5 0 1 1 15.5-4.5Z"/><path d="M9 8.2c.6 2.7 2 4.3 4.6 5.7l1.2-1.1 1.6.9c.1 1.3-1.3 2.1-2.5 1.7-3.1-1-5.1-3-6.1-5.9-.3-.8.2-1.5 1.2-1.3Z"/></symbol>
+    <symbol id="doctor-icon" viewBox="0 0 24 24"><circle cx="12" cy="6" r="4"/><path d="M4 22v-3a5 5 0 0 1 4-5l4 4 4-4a5 5 0 0 1 4 5v3Zm3-1v-3m10 1h-2m1-1v2"/></symbol>
+    <symbol id="monitor-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="13" rx="2"/><path d="M8 21h8m-4-5v5m-3-11 2-2 1 3 2-4 1 3h2"/></symbol>
+    <symbol id="shield-icon" viewBox="0 0 24 24"><path d="M12 2.5c2.7 1.8 5.2 2.5 8 3v5.4c0 5.1-3.2 8.8-8 10.6-4.8-1.8-8-5.5-8-10.6V5.5c2.8-.5 5.3-1.2 8-3Z"/><path d="m8.4 11.8 2.4 2.4 4.8-5"/></symbol>
+    <symbol id="scalpel-icon" viewBox="0 0 24 24"><path d="m14.6 6.2 2.6-2.6a1.7 1.7 0 0 1 2.4 2.4l-7.8 7.8-2.4-2.4zM9.4 11.4l-3 3c-1.4 1.4-1.9 3.3-2.2 5.5 2.3-.3 4.2-.8 5.6-2.2l3-3"/></symbol>
+    <symbol id="crown-icon" viewBox="0 0 24 24"><path d="m3 5 5 4 4-5 4 5 5-4-2.5 12h-13Zm3 16h12"/></symbol>
+    <symbol id="child-icon" viewBox="0 0 24 24"><path d="M5.7 8.3a7 7 0 0 1 12.6 0 4 4 0 0 1 1.4 7.6 8.4 8.4 0 0 1-15.4 0 4 4 0 0 1 1.4-7.6ZM10 6.7c1.7.5 2.4-.7 2.5-2.1M9.2 14.6c1.5 1.6 4.1 1.6 5.6 0M8.8 11h.1m6.2 0h.1"/></symbol>
+    <symbol id="chair-icon" viewBox="0 0 24 24"><path d="M6 10V6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v4m-12 9v2m12-2v2M5 11a2 2 0 0 0-2 2v3a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3v-3a2 2 0 1 0-4 0v2H7v-2a2 2 0 0 0-2-2Z"/></symbol>
+  </svg>
+  <div class="scene" id="start">
+    <header class="topbar">
+      <a class="brand" href="#start"><svg aria-hidden="true"><use href="#tooth-icon"/></svg><span>Стоматология<br>в Каспийске</span></a>
+      <nav class="nav" aria-label="Основная навигация">
+        <button type="button" data-panel="services">Услуги <svg aria-hidden="true"><use href="#down-icon"/></svg></button>
+        <button type="button" data-panel="clinic">О клинике</button>
+        <button type="button" data-panel="doctors">Врачи</button>
+        <button type="button" data-panel="contacts">Контакты</button>
+      </nav>
+      <div class="contacts">
+        <button class="phone" type="button" data-panel="contacts"><svg aria-hidden="true"><use href="#phone-icon"/></svg><span>+7 (928) 555-24-24</span></button>
+        <button class="whatsapp" type="button" data-panel="contacts" aria-label="WhatsApp"><svg aria-hidden="true"><use href="#chat-icon"/></svg></button>
+      </div>
+    </header>
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <h1 id="hero-title" class="enter">Лечение зубов<br>в Каспийске</h1>
+          <p class="lead enter" style="--enter-order: 1">Все основные стоматологические услуги в одном месте для взрослых и детей</p>
+          <ul class="features" aria-label="Преимущества клиники">
+            <li class="enter" style="--enter-order: 2"><svg aria-hidden="true"><use href="#doctor-icon"/></svg><span>Опытные врачи</span></li>
+            <li class="enter" style="--enter-order: 3"><svg aria-hidden="true"><use href="#monitor-icon"/></svg><span>Современное<br>оборудование</span></li>
+            <li class="enter" style="--enter-order: 4"><svg aria-hidden="true"><use href="#shield-icon"/></svg><span>Безболезненное<br>лечение</span></li>
+          </ul>
+          <div class="actions">
+            <button class="primary enter" style="--enter-order: 5" type="button" data-panel="booking">Записаться на осмотр <svg aria-hidden="true"><use href="#arrow-icon"/></svg></button>
+            <button class="secondary enter" style="--enter-order: 6" type="button" data-panel="services">Все услуги</button>
+          </div>
+          <nav class="specialties" aria-label="Направления лечения">
+            <button class="enter" style="--enter-order: 7" type="button" data-panel="therapy"><svg aria-hidden="true"><use href="#tooth-icon"/></svg>Терапия</button>
+            <button class="enter" style="--enter-order: 8" type="button" data-panel="surgery"><svg aria-hidden="true"><use href="#scalpel-icon"/></svg>Хирургия</button>
+            <button class="enter" style="--enter-order: 9" type="button" data-panel="orthopedics"><svg aria-hidden="true"><use href="#crown-icon"/></svg>Ортопедия</button>
+            <button class="enter" style="--enter-order: 10" type="button" data-panel="children"><svg aria-hidden="true"><use href="#child-icon"/></svg>Детский приём</button>
+          </nav>
+          <article class="comfort enter" style="--enter-order: 11">
+            <div class="comfort-image">
+              <img src="assets/clinic-reception.webp" width="188" height="100" alt="Светлый интерьер ресепшена стоматологии">
+            </div>
+            <div class="comfort-copy">
+              <span class="comfort-icon"><svg aria-hidden="true"><use href="#chair-icon"/></svg></span>
+              <div><h2>Комфортное лечение</h2><p>Современная клиника<br>с заботой о каждом пациенте</p></div>
+            </div>
+          </article>
+        </div>
+        <figure class="art">
+          <img class="art-background" src="assets/glass-backdrop.webp" width="647" height="617" alt="">
+          <div class="portrait man"><img src="assets/portrait-man.webp" width="291" height="291" alt=""></div>
+          <div class="portrait woman"><img src="assets/portrait-woman.webp" width="276" height="287" alt=""></div>
+          <div class="portrait child"><img src="assets/portrait-child.webp" width="248" height="248" alt=""></div>
+          <div class="portrait speech-anchor man"><p class="speech">Здоровая улыбка в 50</p></div>
+          <div class="portrait speech-anchor woman"><p class="speech">Теперь я искреннее улыбаюсь</p></div>
+          <div class="portrait speech-anchor child"><p class="speech">Зубы теперь не болят</p></div>
+          <figcaption class="rating" title="Демонстрационные данные из макета">
+            <strong><span aria-hidden="true">★</span> 4.9</strong>
+            <span>1 200+ пациентов</span>
+          </figcaption>
+        </figure>
+      </section>
+    </main>
+  </div>
+  <dialog aria-labelledby="dialog-title">
+    <form method="dialog"><button class="close" aria-label="Закрыть" autofocus>×</button></form>
+    <h2 id="dialog-title"></h2>
+    <p class="dialog-copy"></p>
+    <ul class="dialog-list"></ul>
+  </dialog>
+</body>
+</html>
