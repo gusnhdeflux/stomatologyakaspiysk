@@ -1,0 +1,435 @@
+@font-face {
+  font-family: "Helvetica Neue Local";
+  src: local("HelveticaNeue-Roman"), local("Helvetica Neue Roman"), local("Helvetica Neue");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Helvetica Neue Local";
+  src: local("HelveticaNeue-Medium"), local("Helvetica Neue Medium");
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Helvetica Neue Local";
+  src: local("HelveticaNeue-Bold"), local("Helvetica Neue Bold");
+  font-weight: 700;
+  font-display: swap;
+}
+
+:root {
+  font-family: "Helvetica Neue Local", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #0b1618;
+  background: #fff;
+  --brand-accent: #16b0c8;
+  --ambient-accent: #84e3f2;
+  --ink: #0b1618;
+  --accent: #00a9bb;
+  --accent-text: #007687;
+  --ease: cubic-bezier(.22, 1, .36, 1);
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; }
+button { color: inherit; font: inherit; cursor: pointer; }
+button:focus-visible { outline: 2px solid #007688; outline-offset: 5px; }
+button[hidden] { display: none; }
+
+.stage {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  min-height: 100svh;
+  align-items: center;
+  overflow: clip;
+}
+.stage::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -108px;
+  pointer-events: none;
+  background:
+    radial-gradient(circle clamp(120px, 11vw, 190px) at 108px 16%, var(--ambient-accent) 97%, transparent),
+    radial-gradient(ellipse clamp(110px, 13vw, 220px) clamp(120px, 16vw, 230px) at 96px 80%, color-mix(in srgb, var(--ambient-accent) 48%, transparent) 97%, transparent),
+    radial-gradient(circle clamp(106px, 10vw, 175px) at 57% 72%, color-mix(in srgb, var(--ambient-accent) 79%, transparent) 97%, transparent),
+    radial-gradient(ellipse clamp(145px, 12vw, 210px) clamp(175px, 18vw, 290px) at calc(100% - 78px) 58%, var(--ambient-accent) 97%, transparent);
+  filter: blur(108px);
+  opacity: .88;
+}
+.hero {
+  position: relative;
+  isolation: isolate;
+  container-type: inline-size;
+  width: min(100%, 1740px);
+  aspect-ratio: 1672 / 941;
+  margin-inline: auto;
+}
+.intro { position: absolute; inset: 0; }
+h1 {
+  position: absolute;
+  top: 14.6%;
+  left: 7.2%;
+  margin: 0;
+  font-size: 52px;
+  line-height: 1.04;
+  letter-spacing: -.025em;
+  font-weight: 400;
+}
+h1::before, .promise::before, .service-window::before {
+  content: "";
+  flex: none;
+  border-radius: 50%;
+  background: var(--accent);
+}
+h1::before {
+  position: absolute;
+  top: .87em;
+  left: -.56em;
+  width: .29em;
+  height: .29em;
+  background: var(--brand-accent);
+}
+
+.clinic-photos {
+  position: absolute;
+  display: flex;
+  align-items: end;
+  gap: .96cqw;
+  top: 35.5%;
+  left: 4.55%;
+}
+.clinic-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+.clinic-photo {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 1.2cqw;
+  box-shadow: 0 6px 13px -8px #0e3d4555;
+}
+.clinic-photo figcaption {
+  position: absolute;
+  inset: auto 0 0;
+  padding: 1.8em .8em .64em;
+  background: linear-gradient(transparent, #091b25d9);
+  color: white;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.15;
+}
+.reception { width: 17.35cqw; }
+.treatment { width: 12.44cqw; }
+
+.promise {
+  position: absolute;
+  top: 62.65%;
+  left: 4.46%;
+  width: 34.8%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .55em;
+  margin: 0;
+  padding: .35em .7em;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--brand-accent);
+}
+.promise::before { width: .54em; height: .54em; background: currentColor; }
+
+.specialties {
+  position: absolute;
+  top: 71.8%;
+  left: 4.46%;
+  width: 34.8%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2.35cqw;
+}
+.specialties button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 44px;
+  padding: .22em 0 .48em;
+  border: 0;
+  border-bottom: 1px solid var(--accent);
+  background: transparent;
+  font-size: 20px;
+  font-weight: 400;
+  transition: color .25s ease, border-color .25s ease, background-color .25s ease;
+}
+.specialties button svg,
+.secondary svg {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.55;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.specialties button svg { color: var(--brand-accent); }
+.actions {
+  position: absolute;
+  left: 4.46%;
+  top: 81.8%;
+  display: flex;
+  align-items: center;
+  gap: 2.75cqw;
+}
+.actions button {
+  position: relative;
+  height: 67px;
+  padding: 0;
+  border: 0;
+  border-radius: 12px;
+  font-size: 20px;
+  letter-spacing: normal;
+  transition: transform .32s var(--ease), box-shadow .32s var(--ease), background-color .25s ease;
+}
+.actions .primary {
+  display: inline-flex;
+  align-items: center;
+  gap: .48em;
+  font-weight: 700;
+  padding-inline: 1.43em;
+  background: var(--brand-accent);
+  color: white;
+  box-shadow: 0 8px 15px -10px #004955a8;
+}
+.primary::before {
+  content: "";
+  flex: none;
+  width: .36em;
+  height: .36em;
+  border-radius: 50%;
+  background: currentColor;
+}
+.actions .secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding-inline: .8em;
+  border: 1px solid currentColor;
+  background: transparent;
+  color: var(--brand-accent);
+  font-weight: 500;
+}
+@media (hover: hover) {
+  .specialties button:hover { color: var(--accent-text); border-color: currentColor; background: #e9f9fa; }
+  .actions .primary:hover { transform: translateY(-3px); box-shadow: 0 15px 25px -11px #00799195; }
+  .actions .secondary:hover { background-color: #16b0c80d; }
+}
+.actions .primary:active { transform: translateY(1px); box-shadow: 0 4px 8px -7px #004955a8; }
+
+.tooth { position: absolute; top: -7.14cqw; left: 30.75cqw; width: 8.5cqw; }
+.tooth-viewport {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 280 / 330;
+  overflow: hidden;
+  contain: paint;
+  animation: float 7.6s ease-in-out infinite;
+  --lift: 10px;
+  --drop: 5px;
+}
+.tooth-viewport > .tooth-turn {
+  /* One strip of 31 poses from the molar model, with the front pose in the middle. */
+  display: block;
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 3100%;
+  max-width: none;
+  height: 100%;
+  transform: translate3d(calc(-1500% / 31), 0, 0);
+  animation: tooth-turn 7.6s steps(15, end) infinite;
+}
+@keyframes tooth-turn {
+  0%, 50%, 100% { transform: translate3d(calc(-1500% / 31), 0, 0); }
+  25% { transform: translate3d(calc(-3000% / 31), 0, 0); }
+  75% { transform: translate3d(0, 0, 0); }
+}
+.tooth-shadow {
+  position: absolute;
+  left: 20%;
+  bottom: 4%;
+  width: 65%;
+  height: 12%;
+  border-radius: 50%;
+  background: #075e7660;
+  filter: blur(.55cqw);
+  animation: breathe 7.6s ease-in-out infinite;
+}
+.portraits { position: absolute; inset: 0; pointer-events: none; z-index: -1; }
+.portrait {
+  position: absolute;
+  width: 25.2%;
+  aspect-ratio: .987;
+  border-radius: 50%;
+  animation: float var(--duration) ease-in-out var(--delay) infinite;
+  box-shadow: 0 1.4cqw 2.6cqw -.5cqw #064e5c3b, 0 .4cqw .9cqw -.36cqw #18474d56;
+}
+.portrait img { display: block; width: 100%; height: 100%; border-radius: inherit; }
+.man { top: 9.68%; left: 48.15%; --duration: 9.4s; --delay: -2s; --lift: 7px; --drop: 4px; }
+.woman { top: 14.45%; left: 69.62%; --duration: 11.8s; --delay: -7.3s; --lift: 8px; --drop: 4px; }
+.child { top: 47.4%; left: 58.49%; width: 24.65%; aspect-ratio: 1.01; --duration: 10.5s; --delay: -4.6s; --lift: 5px; --drop: 4px; }
+
+.portrait.speech-anchor { box-shadow: none; }
+.speech {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  width: max-content;
+  max-width: min(245px, 43vw);
+  margin: 0;
+  padding: .68em .94em;
+  border-radius: 15px;
+  background: #fff;
+  box-shadow: 0 6px 22px #174b6024;
+  color: #16343e;
+  font-size: clamp(13px, 1.1cqw, 18px);
+  font-weight: 650;
+  line-height: 1.22;
+  text-align: center;
+  opacity: 0;
+  transform: translate(-50%, 7px);
+  animation: speech-cycle 12.6s var(--speech-delay, 0s) ease-in-out infinite;
+}
+.speech::after {
+  content: "";
+  position: absolute;
+  left: calc(50% - 6px);
+  bottom: -4px;
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  background: inherit;
+  transform: rotate(45deg);
+}
+.woman .speech { --speech-delay: 4.2s; }
+.child .speech { --speech-delay: 8.4s; }
+@keyframes speech-cycle {
+  0% { opacity: 0; transform: translate(-50%, 7px); }
+  4.7619%, 28.5714% { opacity: 1; transform: translate(-50%, 0); }
+  33.3333%, 100% { opacity: 0; transform: translate(-50%, -4px); }
+}
+
+.highlights {
+  position: absolute;
+  left: 42.5%;
+  top: 62.8%;
+  display: flex;
+  align-items: center;
+  gap: .18em;
+  font-size: clamp(13px, 1.24cqw, 22px);
+  letter-spacing: -.02em;
+}
+.service-window {
+  position: relative;
+  height: 1.55em;
+  width: max-content;
+  overflow: hidden;
+  mask-image: linear-gradient(transparent, #000 13%, #000 87%, transparent);
+  padding-left: 1.06em;
+  color: var(--brand-accent);
+  font-weight: 650;
+}
+.service-window::before { position: absolute; top: .62em; left: 0; width: .34em; height: .34em; background: currentColor; }
+.service-track { transform: translateY(-80%); }
+.service-track span { display: block; height: 1.55em; line-height: 1.55; white-space: nowrap; }
+.hero[data-paused] :is(.portrait, .speech, .tooth-viewport, .tooth-turn, .tooth-shadow) { animation-play-state: paused; }
+
+@keyframes float {
+  0%, 100% { transform: translate3d(0, var(--drop), 0); }
+  50% { transform: translate3d(0, calc(-1 * var(--lift)), 0); }
+}
+@keyframes breathe { 0%, 100% { opacity: .72; transform: scale(.87); } 50% { opacity: .38; transform: scale(1.1); } }
+
+.panel {
+  width: min(90vw, 32rem);
+  padding: 0;
+  color: var(--ink);
+  background: #fff;
+  border: 0;
+  border-radius: 24px;
+  box-shadow: 0 28px 90px #0b495c40;
+}
+.panel[open] { animation: panel-in .4s var(--ease) both; }
+.panel::backdrop { background: #0b353c65; }
+.panel-body { position: relative; padding: 2.25rem; }
+.panel h2 { margin: 0 1.5rem .9rem 0; line-height: 1.15; letter-spacing: -.045em; }
+.panel p, .panel li { line-height: 1.65; }
+.panel ul { margin-bottom: 0; padding-left: 1.2em; }
+.panel ul:empty, .panel p:empty { display: none; }
+.close { position: absolute; top: .55rem; right: .55rem; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 50%; background: #edf7f8; font-size: 26px; }
+.close:hover { background: #deeff1; }
+@keyframes panel-in { from { opacity: 0; transform: translateY(9px) scale(.98); } }
+.visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+@media (min-width: 951px) and (max-width: 1100px) {
+  .specialties { grid-template-columns: 1fr 1fr 1.16fr; gap: 12px; }
+}
+@media (max-width: 620px), (min-width: 951px) and (max-width: 1379px) {
+  .specialties button {
+    flex-direction: column;
+    gap: 3px;
+    padding-block: 3px 4px;
+  }
+  .specialties button svg { width: 18px; height: 18px; }
+}
+@media (max-width: 950px) {
+  .stage { display: block; }
+  .hero { aspect-ratio: auto; display: flex; flex-direction: column; padding: 42px clamp(20px, 5.5vw, 45px) 31px; }
+  .intro, h1, .clinic-photos, .promise, .specialties, .actions, .portraits, .highlights { position: relative; inset: auto; }
+  .intro { width: 100%; }
+  h1 { padding-left: .43em; }
+  h1::before { top: .9em; left: 0; }
+  .clinic-photos { margin: 25px 0 18px; gap: 2.2cqw; }
+  .clinic-photo { border-radius: 12px; }
+  .reception { width: 42%; }
+  .treatment { width: 31%; }
+  .tooth { top: -8px; left: auto; right: 0; width: 17%; max-width: 122px; --lift: 7px; }
+  .tooth-shadow { filter: blur(5px); }
+  .promise { width: 100%; }
+  .specialties { width: 100%; margin-top: 10px; gap: clamp(4px, 2cqw, 15px); }
+  .actions { gap: 4.3cqw; flex-wrap: wrap; margin-top: 19px; }
+  .actions .primary { padding-inline: .95em; }
+  .portraits { width: min(100%, 560px); aspect-ratio: 781 / 763; margin: 74px auto 0; }
+  .portrait { width: 54%; box-shadow: 0 10px 21px -7px #185b6a67; }
+  .man { top: 0; left: 0; }
+  .woman { top: 5.9%; left: 46%; }
+  .child { top: 46.6%; left: 22.15%; width: 52.75%; }
+  .highlights { align-self: center; margin-top: 11px; font-size: 16px; }
+}
+@media (max-width: 410px) {
+  h1 { padding-left: .34em; letter-spacing: -.035em; }
+  .treatment { width: 33%; }
+  .clinic-photo figcaption { padding-inline: 5px; }
+  .specialties { grid-template-columns: auto auto auto; letter-spacing: -.025em; gap: 4px; }
+  .specialties button { letter-spacing: inherit; }
+  .actions .primary { padding-inline: .6em; }
+}
+@media (max-width: 360px) {
+  h1 { padding-left: 0; }
+  h1::before { left: -.37em; width: .23em; height: .23em; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition-duration: 0s !important; }
+  .hero .primary:hover, .hero .primary:active { transform: none; }
+}
+@media (max-width: 950px) and (prefers-reduced-motion: reduce) {
+  .portraits { margin-top: 21px; }
+}
